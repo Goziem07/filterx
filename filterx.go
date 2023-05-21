@@ -17,6 +17,8 @@ type FilterFile struct {
 }
 
 func main() {
+	log.SetFlags(0) // Disable timestamp in log output
+
 	// Parse command line arguments
 	filterName := flag.String("g", "", "Filter name")
 	filterDir := flag.String("d", "", "Directory containing filter files")
