@@ -17,7 +17,7 @@ FilterX supports the following commands:
 
 ## Usage
 
-1. Create a directory using the command:
+1. Create a directory using the command (I am using urlfilter as my filename):
 
 `mkdir urlfilter`
 
