@@ -32,9 +32,7 @@ FilterX supports the following commands:
 }
 ```
 
-3. Prepare a file named <file containing urls>.txt with the list of URLs you want to filter.
-  
-4. Prepare a file named urls.txt with the list of URLs you want to filter.
+3. Prepare a file named `<file containing urls>.txt` with the list of URLs you want to filter.
   
 Run FilterX using the desired command:
 
@@ -44,9 +42,9 @@ To filter URLs using a specific filter, use the -g flag followed by the filter n
   
 ## Example
 
-Suppose you have a filter named sqli in the /<directory>/urlfilter directory, which contains a list of SQL injection-related words. You want to filter URLs from the urls.txt file using this filter. Here's how you can use FilterX:
+Suppose you have a filter named sqli in the `/<directory>/urlfilter` directory, which contains a list of SQL injection-related words. You want to filter URLs from the urls.txt file using this filter. Here's how you can use FilterX:
 
-Create the JSON filter file <path to directory>/urlfilter/sqli.json with the following content:
+Create the JSON filter file `<path to directory>/urlfilter/sqli.json` with the following content:
 
 ```
 {
@@ -58,7 +56,7 @@ Create the JSON filter file <path to directory>/urlfilter/sqli.json with the fol
   ]
 }
 ```
-Create the <file containing urls>.txt file with a list of URLs to filter.
+Create the `<file containing urls>.txt` file with a list of URLs to filter.
 
 Run FilterX with the desired command:
 
