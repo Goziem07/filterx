@@ -6,7 +6,7 @@ FilterX is a command-line tool written in Go that allows you to filter and print
 
 To install FilterX, you can use the following go get command:
 
-`go get github.com/Goziem07/findip`
+`go install -v github.com/Goziem07/FilterX@latest`
 
 ## Commands
 
@@ -62,6 +62,6 @@ Create the <file containing urls>.txt file with a list of URLs to filter.
 
 Run FilterX with the desired command:
 
-`cat <file containing urls>.txt | filterx -g sqli -d <path to directory>/urlfilter`
+`cat <file containing urls>.txt | FilterX -g sqli -d <path to directory>/urlfilter`
 
 FilterX will process the URLs and print out the matching ones based on the SQL injection filter.
