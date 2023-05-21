@@ -46,7 +46,7 @@ To filter URLs using a specific filter, use the -g flag followed by the filter n
 
 Suppose you have a filter named sqli in the /<directory>/urlfilter directory, which contains a list of SQL injection-related words. You want to filter URLs from the urls.txt file using this filter. Here's how you can use FilterX:
 
-Create the JSON filter file /<directory>/sqli.json with the following content:
+Create the JSON filter file <path to directory>/urlfilter/sqli.json with the following content:
 
 ```
 {
@@ -62,6 +62,6 @@ Create the <file containing urls>.txt file with a list of URLs to filter.
 
 Run FilterX with the desired command:
 
-`cat <file containing urls>.txt | filterx -g sqli -d <directory/urlfilter>`
+`cat <file containing urls>.txt | filterx -g sqli -d <path to directory>/urlfilter`
 
 FilterX will process the URLs and print out the matching ones based on the SQL injection filter.
