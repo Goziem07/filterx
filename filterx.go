@@ -20,20 +20,17 @@ func main() {
 	// Parse command line arguments
 	flag.Parse()
 
-	// Get the name of the tool
-	toolName := filepath.Base(os.Args[0])
-
 	// Print the tool banner
-	printBanner(toolName)
+	printBanner()
 
 	// Get the filter name from the first argument
-	if len(flag.Args()) != 1 {
-		log.Fatalf("Filter name is required. Usage: cat urls.txt | %s <filter-name>", toolName)
-	}
 	filterName := flag.Arg(0)
+	if filterName == "" {
+		log.Fatal("Filter name is required. Usage: cat urls.txt | filterx <filter-name>")
+	}
 
 	// Read the filter file
-	filterFilePath := filepath.Join("/filterx", filterName+".json")
+	filterFilePath := filepath.Join("Filterx-patterns", filterName+".json")
 	filterData, err := ioutil.ReadFile(filterFilePath)
 	if err != nil {
 		log.Fatalf("Failed to read filter file: %v", err)
@@ -53,23 +50,18 @@ func main() {
 	filterAndPrintUrls(urls, filter.Words)
 }
 
-func printBanner(toolName string) {
-	banner := `
- ________  __  __    __                         __    __ 
-|        \|  \|  \  |  \                       |  \  |  \
-| $$$$$$$$ \$$| $$ _| $$_     ______    ______ | $$  | $$
-| $$__    |  \| $$|   $$ \   /      \  /      \ \$$\/  $$
-| $$  \   | $$| $$ \$$$$$$  |  $$$$$$\|  $$$$$$\ >$$  $$ 
-| $$$$$   | $$| $$  | $$ __ | $$    $$| $$   \$$/  $$$$\ 
-| $$      | $$| $$  | $$|  \| $$$$$$$$| $$     |  $$ \$$\
-| $$      | $$| $$   \$$  $$ \$$     \| $$     | $$  | $$
- \$$       \$$ \$$    \$$$$   \$$$$$$$ \$$      \$$   \$$
-                                                         
-                                                         
-                                                         
-	`
-	fmt.Println(banner)
-	fmt.Printf("Welcome to %s!\n\n", toolName)
+func printBanner() {
+	fmt.Println(`
+  ________  __  __    __                         __    __
+ |        \|  \|  \  |  \                       |  \  |  \
+ | $$$$$$$$ \$$| $$ _| $$_     ______    ______ | $$  | $$
+ | $$__    |  \| $$|   $$ \   /      \  /      \ \$$\/  $$
+ | $$  \   | $$| $$ \$$$$$$  |  $$$$$$\|  $$$$$$\ >$$  $$
+ | $$$$$   | $$| $$  | $$ __ | $$    $$| $$   \$$/  $$$$\ 
+ | $$      | $$| $$  | $$|  \| $$$$$$$$| $$     |  $$ \$$\
+ | $$      | $$| $$   \$$  $$ \$$     \| $$     | $$  | $$
+  \$$       \$$ \$$    \$$$$   \$$$$$$$ \$$      \$$   \$$   by @g0ziem
+`)
 }
 
 func readUrlsFromStdin() []string {
