@@ -8,58 +8,24 @@ To install FilterX, you can use the following go get command:
 
 `go install -v github.com/Goziem07/filterx@latest`
 
-## Commands
-
-FilterX supports the following commands:
-
-- `-g <filter-name>`: Specify the name of the filter to use. Filter names correspond to JSON files containing a list of filter words.
-- `-d <path/to/filter/directory>`: Specify the directory where your json files are.
-
 ## Usage
 
-1. Create a directory using the command (I am using urlfilter as my filename):
+1. Clone the repository Filterx-patterns repository:
 
-`mkdir urlfilter`
+`git clone https://github.com/Goziem07/Filterx-patterns.git`
 
-2. Create a JSON filter file: In the `/<directory>/urlfilter` directory, create a JSON file with a list of filter words. Each JSON file should have the following structure, for example, if you want to create sqli.json:
-
-```
-{
-  "words": [
-    "id=",
-    "orderby="
-  ]
-}
-```
-
-3. Prepare a file named `<file containing urls>.txt` with the list of URLs you want to filter.
+3. Prepare a file containing with the list of URLs you want to filter.
   
 Run FilterX using the desired command:
 
 To filter URLs using a specific filter, use the -g flag followed by the filter name. For example, to filter URLs using the sqli filter, run:
 
-`cat <file containing urls>.txt | filterx -g sqli -d /<directory>/urlfilter`
+`cat <file containing urls>.txt | filterx sqli`
   
 ## Example
 
-Suppose you have a filter named sqli in the `/<directory>/urlfilter` directory, which contains a list of SQL injection-related words. You want to filter URLs from the urls.txt file using this filter. Here's how you can use FilterX:
+Suppose you want to filter sqli related words, here's how you can use FilterX:
 
-Create the JSON filter file `<path to directory>/urlfilter/sqli.json` with the following content:
-
-```
-{
-  "words": [
-    "id=",
-    "select=",
-    "report=",
-    ...
-  ]
-}
-```
-Create the `<file containing urls>.txt` file with a list of URLs to filter.
-
-Run FilterX with the desired command:
-
-`cat <file containing urls>.txt | FilterX -g sqli -d <path to directory>/urlfilter`
+`cat <file containing urls>.txt | filterx sqli`
 
 FilterX will process the URLs and print out the matching ones based on the SQL injection filter.
