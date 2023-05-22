@@ -17,23 +17,23 @@ type FilterFile struct {
 }
 
 func main() {
-	log.SetFlags(0) // Disable timestamp in log output
-
 	// Parse command line arguments
-	filterName := flag.String("g", "", "Filter name")
-	filterDir := flag.String("d", "", "Directory containing filter files")
 	flag.Parse()
 
-	if *filterName == "" {
-		log.Fatal("Filter name is required. Usage: filterx -g <filter-name> -d <filter-directory>")
-	}
+	// Get the name of the tool
+	toolName := filepath.Base(os.Args[0])
 
-	if *filterDir == "" {
-		log.Fatal("Filter directory is required. Usage: filterx -g <filter-name> -d <filter-directory>")
+	// Print the tool banner
+	printBanner(toolName)
+
+	// Get the filter name from the first argument
+	if len(flag.Args()) != 1 {
+		log.Fatalf("Filter name is required. Usage: cat urls.txt | %s <filter-name>", toolName)
 	}
+	filterName := flag.Arg(0)
 
 	// Read the filter file
-	filterFilePath := filepath.Join(*filterDir, *filterName+".json")
+	filterFilePath := filepath.Join("/filterx", filterName+".json")
 	filterData, err := ioutil.ReadFile(filterFilePath)
 	if err != nil {
 		log.Fatalf("Failed to read filter file: %v", err)
@@ -51,6 +51,25 @@ func main() {
 
 	// Filter and print matching URLs
 	filterAndPrintUrls(urls, filter.Words)
+}
+
+func printBanner(toolName string) {
+	banner := `
+ ________  __  __    __                         __    __ 
+|        \|  \|  \  |  \                       |  \  |  \
+| $$$$$$$$ \$$| $$ _| $$_     ______    ______ | $$  | $$
+| $$__    |  \| $$|   $$ \   /      \  /      \ \$$\/  $$
+| $$  \   | $$| $$ \$$$$$$  |  $$$$$$\|  $$$$$$\ >$$  $$ 
+| $$$$$   | $$| $$  | $$ __ | $$    $$| $$   \$$/  $$$$\ 
+| $$      | $$| $$  | $$|  \| $$$$$$$$| $$     |  $$ \$$\
+| $$      | $$| $$   \$$  $$ \$$     \| $$     | $$  | $$
+ \$$       \$$ \$$    \$$$$   \$$$$$$$ \$$      \$$   \$$
+                                                         
+                                                         
+                                                         
+	`
+	fmt.Println(banner)
+	fmt.Printf("Welcome to %s!\n\n", toolName)
 }
 
 func readUrlsFromStdin() []string {
