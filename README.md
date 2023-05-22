@@ -10,7 +10,7 @@ To install FilterX, you can use the following go get command:
 
 ## Usage
 
-1. Clone the repository Filterx-patterns repository:
+1. Clone the Filterx-patterns repository:
 
 `git clone https://github.com/Goziem07/Filterx-patterns.git`
 
