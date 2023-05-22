@@ -4,9 +4,33 @@ FilterX is a command-line tool written in Go that allows you to filter and print
 
 ## Installation
 
+## Installation 1
+
 To install FilterX, you can use the following go get command:
 
 `go install -v github.com/Goziem07/filterx@latest`
+
+## Installtion 2
+
+1. Clone Filterx-patterns
+
+`git clone https://github.com/Goziem07/Filterx-patterns.git`
+
+2. Clone Filterx
+
+`git clone https://github.com/Goziem07/filterx.git`
+
+3. Move to the directory
+
+`cd filterx`
+
+4. Build it
+
+`go build -o filterx`
+
+5. Move the binary to /usr/local/bin
+
+`sudo mv filterx /usr/local/bin`
 
 ## Usage
 
